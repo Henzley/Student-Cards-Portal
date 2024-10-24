@@ -19,20 +19,21 @@ if ($_SERVER["REQUEST_METHOD"] == "POST") {
     $studentNumber = $_POST['stdntnum'];
     $studentName = $_POST['name'];
     $studentSurname = $_POST['surname'];
+    $contactNumber = $_POST['contactNumber'];
+    $email = $_POST['email'];
     $yearOfStudy = $_POST['yos'];
     $department = $_POST['dept'];
     $password = password_hash($_POST['password'], PASSWORD_DEFAULT); // Hash the password (for security/privacy reasons)
 
     // Prepare SQL statement
-    $sql = "INSERT INTO Student (StudentNumber, StudentName, StudentSurname, YearOfStudy, Department, Password) 
-            VALUES (?, ?, ?, ?, ?, ?)";
+    $sql = "INSERT INTO Student (StudentNumber, StudentName, StudentSurname,StudentContactNumber,StudentEmail, YearOfStudy, Department, Password) 
+            VALUES (?, ?, ?, ?, ?, ?, ?, ?)";
 
     // Create a prepared statement
     $stmt = $conn->prepare($sql);
 
     // Bind parameters to the prepared statement
-    $stmt->bind_param("ssssss", $studentNumber, $studentName, $studentSurname, $yearOfStudy, $department, $password);
-
+    $stmt->bind_param("ssssssss", $studentNumber, $studentName, $studentSurname, $contactNumber, $email, $yearOfStudy, $department, $password);
     // Execute the prepared statement
     if ($stmt->execute()) {
         // Redirect to success page(leads user back to Signup.html to log in)
