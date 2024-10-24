@@ -39,10 +39,10 @@ if (isset($_POST['stdntnum']) && isset($_POST['password'])) {
         if (password_verify($password, $row['Password'])) {
             echo "success";
         } else {
-            echo "Incorrect password. Please try again.";
+            echo "Incorrect student number or password. Please try again.";
         }
     } else {
-        echo "Student number not found. Please check and try again.";
+        echo "Incorrect student number or password. Please check and try again.";
     }
 
     // Close statement
