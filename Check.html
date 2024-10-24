@@ -62,7 +62,7 @@
                 var studentNumber = $("#studentNumber").val();
 
                 $.ajax({
-                    url: 'check_status.php',
+                    url: 'checkStatus.php',
                     type: 'POST',
                     data: { studentNumber: studentNumber },
                     success: function (response) {
